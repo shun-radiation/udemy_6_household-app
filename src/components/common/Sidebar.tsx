@@ -10,8 +10,8 @@ import {
   ListItemText,
   Toolbar,
 } from '@mui/material';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
+// import InboxIcon from '@mui/icons-material/MoveToInbox';
+// import MailIcon from '@mui/icons-material/Mail';
 import HomeIcon from '@mui/icons-material/Home';
 import EqualizerIcon from '@mui/icons-material/Equalizer';
 import { NavLink } from 'react-router-dom';
@@ -45,7 +45,11 @@ const Sidebar: FC<SidebarProps> = ({
 }) => {
   const MenuItems: menuItem[] = [
     { text: 'Home', path: '/', icon: HomeIcon },
-    { text: 'Report', path: '/report', icon: EqualizerIcon },
+    {
+      text: 'Report',
+      path: '/report',
+      icon: EqualizerIcon,
+    },
   ];
 
   const baseLinkStyle: CSSProperties = {
@@ -90,7 +94,7 @@ const Sidebar: FC<SidebarProps> = ({
   return (
     <Box
       component='nav'
-      sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
+      sx={{ width: { md: drawerWidth }, flexShrink: { md: 0 } }}
       aria-label='mailbox folders'
     >
       {/* モバイル用drawer */}
@@ -100,7 +104,7 @@ const Sidebar: FC<SidebarProps> = ({
         onTransitionEnd={handleDrawerTransitionEnd}
         onClose={handleDrawerClose}
         sx={{
-          display: { xs: 'block', sm: 'none' },
+          display: { xs: 'block', md: 'none' },
           '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
         }}
         slotProps={{
@@ -116,7 +120,7 @@ const Sidebar: FC<SidebarProps> = ({
       <Drawer
         variant='permanent'
         sx={{
-          display: { xs: 'none', sm: 'block' },
+          display: { xs: 'none', md: 'block' },
           '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
         }}
         open
