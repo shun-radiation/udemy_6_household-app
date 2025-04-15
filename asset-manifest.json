@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/udemy_6_household-app/static/css/main.f855e6bc.css",
-    "main.js": "/udemy_6_household-app/static/js/main.eee1bfdf.js",
+    "main.js": "/udemy_6_household-app/static/js/main.ce1b1cef.js",
     "index.html": "/udemy_6_household-app/index.html",
     "main.f855e6bc.css.map": "/udemy_6_household-app/static/css/main.f855e6bc.css.map",
-    "main.eee1bfdf.js.map": "/udemy_6_household-app/static/js/main.eee1bfdf.js.map"
+    "main.ce1b1cef.js.map": "/udemy_6_household-app/static/js/main.ce1b1cef.js.map"
   },
   "entrypoints": [
     "static/css/main.f855e6bc.css",
-    "static/js/main.eee1bfdf.js"
+    "static/js/main.ce1b1cef.js"
   ]
 }
