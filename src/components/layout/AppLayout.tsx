@@ -6,8 +6,10 @@ import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useNavigate } from 'react-router-dom';
 import SideBar from '../common/Sidebar';
+import { auth } from '../../firebase';
+import { Button } from '@mui/material';
 
 const drawerWidth = 240;
 
@@ -30,6 +32,27 @@ export default function AppLayout() {
     }
   };
 
+  // ログイン・ログアウト機能
+  const navigate = useNavigate();
+  const handleSignOut = async () => {
+    try {
+      await auth.signOut();
+      navigate('/userAuth');
+    } catch (err: any) {
+      alert(err.message);
+    }
+  };
+
+  const handleSignInPage = () => {
+    navigate('/userAuth');
+  };
+
+  React.useEffect(() => {
+    auth.onAuthStateChanged((user) => {
+      !user && navigate('/userAuth');
+    });
+  });
+
   return (
     <Box
       sx={{
@@ -46,9 +69,12 @@ export default function AppLayout() {
         sx={{
           width: { md: `calc(100% - ${drawerWidth}px)` },
           ml: { md: `${drawerWidth}px` },
+          justifyContent: 'space-between',
+          display: 'flex',
+          flexDirection: 'row',
         }}
       >
-        <Toolbar>
+        <Toolbar sx={{}}>
           <IconButton
             color='inherit'
             aria-label='open drawer'
@@ -58,10 +84,18 @@ export default function AppLayout() {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant='h6' noWrap component='div'>
+          <Typography variant='h5' noWrap component='div'>
             TypeScript × React 家計簿
           </Typography>
         </Toolbar>
+        {/* ログイン機能 */}
+        <Button
+          onClick={auth.currentUser === null ? handleSignInPage : handleSignOut}
+          color='inherit'
+          sx={{ px: { md: 3 } }}
+        >
+          {auth.currentUser === null ? 'ログイン' : 'ログアウト'}
+        </Button>
       </AppBar>
 
       {/* サイドバーは、別コンポーネントに移動 */}

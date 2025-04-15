@@ -8,11 +8,13 @@ import AppLayout from './components/layout/AppLayout';
 import { theme } from './theme/them';
 import { CssBaseline, ThemeProvider } from '@mui/material';
 import { collection, getDocs } from 'firebase/firestore';
-import { db } from './firebase';
+import { auth, db } from './firebase';
 import { Transactions } from './types';
 import { formatMonth } from './utils/formatting';
+import UserAuth from './pages/userAuth/UserAuth';
 
 function App() {
+  console.log('ユーザー情報', auth.currentUser);
   // FireStoreエラーかどうかを判別する関数
   function isFireStoreError(
     err: unknown
@@ -62,6 +64,7 @@ function App() {
       <CssBaseline />
       <Router>
         <Routes>
+          <Route path='/userAuth' element={<UserAuth />} />
           <Route path='/' element={<AppLayout />}>
             <Route
               index
