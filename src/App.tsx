@@ -48,6 +48,9 @@ function App() {
           // console.error('firestoreのエラーはコード：', err.code);
         } else {
           console.error('一般的なエラーは：', err);
+
+          // あとで消して
+          setCurrentMonth(new Date());
         }
       }
     };
